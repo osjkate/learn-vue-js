@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        var div = document.querySelector('#app');
+        var viewModel = {};
+
+        /* 
+        객체의 동작을 재정의 하는 api
+        Object.defineProperties('대상 객체','객체의 속성', {
+            // 정의할 내용
+        })
+        */
+
+        // 즉시 실행 함수 : 정의되자마자 즉시 실행되는 함수, 괄호로 둘러쌓인 익명함수
+        // 전역 스코프에 불필요한 변수를 추가해서 오염시키는 것을 방지할 수 있다. 
+        // 내부안으로 다른 변수들이 접근하는 것을 막을 수 있다. 
+        (function() {
+            function init() {
+                Object.defineProperty(viewModel, 'str', {
+                    // 속성에 접근했을 때의 동작을 정의
+                    get: function () {
+                        console.log('접근');
+                    },
+                    // 속성에 값을 할당했을 때의 동작을 정의
+                    set: function (newValue) {
+                        console.log('할당', newValue);
+                        rander(newValue);
+                    }
+                });
+            }
+
+            function rander(value) {
+                div.innerHTML = value;
+            }
+
+            init();
+        })();
+        
+        
+    </script>
+</body>
+</html>
