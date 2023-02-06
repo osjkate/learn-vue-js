@@ -8,15 +8,16 @@
 </head>
 <body>
     <div id="app">
-        <!-- 이 안에서 뷰의 기능과 속성들이 유효해짐 -->
+        <!-- 이 안에서 뷰의 기능과 속성들이 유효해짐 (이 안에서 data를 사용할 수 있다!)-->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         // var options = {};
         // var vm = new Vue(options);
+        // 객체를 통째로 생성자 안에 인자로 넣어주는 것이 가독성이 더 좋다!
         var vm = new Vue({
-                el: '#app',
+                el: '#app', // 아이디가 app인 태그를 찾아서 인스턴스를 붙이겠다는 의미
                 data: {
                     message: 'hi'
                 },
